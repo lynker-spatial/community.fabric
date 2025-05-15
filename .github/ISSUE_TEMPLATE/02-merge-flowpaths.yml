@@ -1,0 +1,65 @@
+# .github/ISSUE_TEMPLATE/02-merge-flowpaths.yml
+
+name: "Map Error: Merge Flowpaths"
+description: "Report flowpath merging issues."
+title: "[Map Error] Merge Flowpaths"
+labels:
+  - map-error-merge-flowpaths
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The title should not be changed and will be automatically updated based on the Item Identifier.
+        Thanks for reporting a map item error!
+        Please provide the required details below.
+        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
+  - type: input
+    id: item-identifier
+    attributes:
+      label: "Item Identifier"
+      description: "The new flowpath id (e.g., wb-620629)."
+      placeholder: "wb-620629"
+    validations:
+      required: true
+  - type: input
+    id: topology-toid
+    attributes:
+      label: "Topology toid"
+      description: "The toid of the feature (e.g., wb-609109)."
+      placeholder: "wb-609109"
+    validations:
+      required: true
+  - type: input
+    id: ids-to-merge
+    attributes:
+      label: "IDs to Merge"
+      description: "List of flowpaths ids to merge (e.g., 'wb-620629,wb-620609,wb-620589,wb-609109')."
+      placeholder: "wb-620629,wb-620609,wb-620589,wb-609109"
+    validations:
+      required: true
+  - type: input
+    id: vpu
+    attributes:
+      label: "VPU"
+      description: "The VPU where the issue occurs (e.g., 01)."
+      placeholder: "01"
+    validations:
+      required: true
+  - type: dropdown
+    id: hf-version
+    attributes:
+      label: "Hydrofabric Version"
+      description: "Select the type of hydrofabric version."
+      options:
+        - v2.2
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: "Describe the issue"
+      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
+      placeholder: "E.g., these flowpaths need to be merged..."
+    validations:
+      required: false

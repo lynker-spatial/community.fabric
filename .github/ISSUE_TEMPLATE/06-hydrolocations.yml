@@ -1,0 +1,107 @@
+# .github/ISSUE_TEMPLATE/06-hydrolocations.yml
+
+name: "Map Error: Hydrolocations"
+description: "Report issues with hydrolocations."
+title: "[Map Error] <item-identifier> Hydrolocations"
+labels:
+  - map-error-hydrolocations
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The title should not be changed and will be automatically updated based on the Item Identifier.
+        Thanks for reporting a map item error!
+        Please provide the required details below.
+        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
+  - type: input
+    id: item-identifier
+    attributes:
+      label: "Item Identifier"
+      description: "The flowpath id (e.g., wb-620629)."
+      placeholder: "wb-620629"
+    validations:
+      required: true
+  - type: input
+    id: item-poi_id
+    attributes:
+      label: "POI Identifier"
+      description: "The hydrolocation poi_id (e.g., 3366)."
+      placeholder: "3366"
+    validations:
+      required: true    
+  - type: input
+    id: vpu
+    attributes:
+      label: "VPU"
+      description: "The VPU where the issue occurs (e.g., 01)."
+      placeholder: "01"
+    validations:
+      required: true
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: "Issue Type"
+      description: "Select the type of issue."
+      options:
+        - Not indexed to the right flowpath
+        - Add a hydrolocation feature
+    validations:
+      required: true
+  - type: input
+    id: new-id
+    attributes:
+      label: "New ID"
+      description: "If 'Not indexed to the right flowpath' is selected, provide the new ID for the correct flowpath (e.g., wb-1455863). Leave blank otherwise."
+      placeholder: "wb-1455863"
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        If 'add a hydrolocation feature' is selected, provide the coordinates and crs of the new hydrolocation feature. Leave blank otherwise.
+        **Coordinates Example:**
+        - Latitude: 37.7749
+        - Longitude: -122.4194
+        - EPSG Code: 4326 (WGS84)
+  - type: input
+    id: latitude
+    attributes:
+      label: "Latitude"
+      description: "The latitude coordinate of the issue location."
+      placeholder: "37.7749"
+    validations:
+      required: false
+  - type: input
+    id: longitude
+    attributes:
+      label: "Longitude"
+      description: "The longitude coordinate of the issue location."
+      placeholder: "-122.4194"
+    validations:
+      required: false
+  - type: input
+    id: epsg-code
+    attributes:
+      label: "EPSG Code"
+      description: "Enter the numerical EPSG code of the coordinate reference system (e.g., 5070 for NAD83 / Conus Albers)."
+      placeholder: "5070"
+    validations:
+      required: false
+  - type: dropdown
+    id: hf-version
+    attributes:
+      label: "Hydrofabric Version"
+      description: "Select the type of hydrofabric version."
+      options:
+        - v2.2
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: "Describe the issue"
+      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
+      placeholder: "E.g., this hydrolocation is incorrectly assigned to this flowpath..."
+    validations:
+      required: false

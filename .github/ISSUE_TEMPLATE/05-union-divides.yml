@@ -1,0 +1,57 @@
+# .github/ISSUE_TEMPLATE/05-union-divides.yml
+
+name: "Map Error: Union Divides"
+description: "Report divides that need to be unioned."
+title: "[Map Error] <item-identifier> Union Divides"
+labels:
+  - reid_divide-union-divides
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The title should not be changed and will be automatically updated based on the Item Identifier.
+        Thanks for reporting a map item error!
+        Please provide the required details below.
+        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
+  - type: input
+    id: item-identifier
+    attributes:
+      label: "Item Identifier"
+      description: "The new divide id (e.g., cat-620629)."
+      placeholder: "cat-620629"
+    validations:
+      required: true
+  - type: input
+    id: id-to-merge
+    attributes:
+      label: "IDs to Merge"
+      description: "List of divide ids to merge (e.g., 'cat-620629,cat-620630,cat-620631')."
+      placeholder: "cat-620629,cat-620630,cat-620631"
+    validations:
+      required: true
+  - type: input
+    id: vpu
+    attributes:
+      label: "VPU"
+      description: "The VPU where the issue occurs (e.g., 01)."
+      placeholder: "01"
+    validations:
+      required: true
+  - type: dropdown
+    id: hf-version
+    attributes:
+      label: "Hydrofabric Version"
+      description: "Select the type of hydrofabric version."
+      options:
+        - v2.2
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: "Describe the issue"
+      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
+      placeholder: "E.g., these divides need to be joined..."
+    validations:
+      required: false
