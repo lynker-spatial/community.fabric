@@ -1,125 +1,182 @@
-# 🛠️ Community Hydrofabric Error Tracking
+# 🛠️ Community Hydrofabric Issue Tracking
 
-[![Workflow Status](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-map-errors.yml/badge.svg)](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-map-errors.yml)
+[![Workflow Status](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-hydrofabric-issues.yml/badge.svg)](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-hydrofabric-issues.yml)
 ![GitHub issues](https://img.shields.io/github/issues/lynker-spatial/Community_Hydrofabric)
 
-- [Hydrolocations: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/map-error-hydrolocations)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3Amap-error-hydrolocations)
-- [Topo Fixes: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/map-error-topo-fixes)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3Amap-error-topo-fixes)
-- [Merge Flowpaths: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/map-error-merge-flowpaths)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3Amap-error-merge-flowpaths)
-- [Reid Divide: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/reid_divide-merge-flowpaths)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3Areid_divide-merge-flowpaths)
-- [Remove Flowpaths: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/reid_divide-remove-flowpaths)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3Areid_divide-remove-flowpaths)
-- [Union Divides: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/reid_divide-union-divides)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3Areid_divide-union-divides)
+- [Flowpaths, Topo Fixes: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-topo-fixes)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-topo-fixes)
+- [Flowpaths, Merge Flowpaths: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-merge-flowpaths)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-merge-flowpaths)
+- [Flowpaths, Remove Flowpaths: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-remove-flowpaths)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-remove-flowpaths)
+- [Divides, Reid Divide: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-reid-divide)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-reid-divide)
+- [Divides, Union Divides: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-union-divides)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-union-divides)
+- [Hydrolocations, Hydrolocation Additions: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-hydrolocation-additions)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-hydrolocation-additions)
+- [Hydrolocations, Hydrolocations Geometry Cleanup: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-hydrolocation-geometry-cleanup)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-hydrolocation-geometry-cleanup)
+- [Data, Large Data Submission: ![issues](https://img.shields.io/github/issues-raw/lynker-spatial/Community_Hydrofabric/Hydrofabric-large-data-submission)](https://github.com/lynker-spatial/Community_Hydrofabric/issues?q=is%3Aopen+is%3Aissue+label%3AHydrofabric-large-data-submission)
 
+# 🏞️ Welcome to the Community Hydrofabric Issue Tracker!
 
-Welcome to the **Community Hydrofabric** repository! This space is dedicated to tracking and managing errors related to map items within the hydrofabric, such as **hydrolocations**, **topology fixes**, and other geospatial issues.
+This repository is the central hub for reporting, tracking, and managing issues related to the **Next Generation Water Resources Modeling Framework Hydrofabric**. We focus on geospatial data quality, network connectivity, and feature accuracy.
 
-We leverage **GitHub issue templates** to standardize the reporting process to automate validation and generate valuable CSV reports for easy tracking and analysis.
+To ensure consistency and enable automation, we use **GitHub Issue Templates**. These templates guide you through providing all necessary information, which in turn helps us validate submissions and generate useful reports for the Hydrofabric team.
 
 ---
 
-## 📄 Table of Contents
+## 📜 Table of Contents
 
-*   [Introduction](#introduction)
-*   [Issue Types](#issue-types)
-    *   [Hydrolocations](#hydrolocations)
-    *   [Topo Fixes](#topo-fixes)
-    *   [Merge Flowpaths](#merge-flowpaths)
-    *   [Reid Divide](#reid-divide)
-    *   [Remove Flowpaths](#remove-flowpaths)
-    *   [Union Divides](#union-divides)
-*   [How to Report an Issue](#how-to-report-an-issue)
+
+*   [🌟 Introduction](#-introduction)
+*   [🛠️ How It Works](#️-how-it-works)
+*   [📍 Identifying Features](#-identifying-features)
+*   [📝 Issue Types & Templates](#-issue-types--templates)
+    *   [🗺️ Flowpaths: Topo Fixes](#️-flowpaths-topo-fixes)
+    *   [🔗 Flowpaths: Merge Flowpaths](#-flowpaths-merge-flowpaths)
+    *   [❌ Flowpaths: Remove Flowpaths](#-flowpaths-remove-flowpaths)
+    *   [🔄 Divides: Reid Divide](#-divides-reid-divide)
+    *   [🤝 Divides: Union Divides](#-divides-union-divides)
+    *   [💧 Hydrolocations: Hydrolocation Additions](#-hydrolocation-hydrolocation-additions)
+    *   [✨ Hydrolocations: Hydrolocation Geometry Cleanup](#-hydrolocation-hydrolocation-geometry-cleanup)
+    *   [💾 Data: Large Data Submission](#-data-large-data-submission)
+*   [❓ How to Report an Issue](#-how-to-report-an-issue)
     *   [Selecting the Right Template](#selecting-the-right-template)
     *   [Filling Out the Template](#filling-out-the-template)
+    *   [Multi-Instance Reporting](#multi-instance-reporting)
     *   [Tips for Reporting](#tips-for-reporting)
-*   [Validation and Automation](#validation-and-automation)
-*   [Additional Information](#additional-information)
-
+*   [🤖 Automation & Validation](#-automation--validation)
+*   [📊 CSV Export](#-csv-export)
+*   [🌐 Additional Information](#-additional-information)
 ---
 
 ## 🌟 Introduction
 
-This repository serves as a central hub for users to report errors in hydrofabric map data. This includes issues like:
+This repository is designed for the community to report specific geospatial issues within the Hydrofabric, including:
 
-*   Incorrect **hydrolocations** (POI assignments)
-*   **Topology** problems (missing/incorrect flowpaths)
-*   **Flowpath** and **divide** errors (merging, removing, re-identifying)
+*   Incorrect or missing **flowpaths** and their connectivity.
+*   Problems with **catchment divides** (e.g., incorrect IDs, necessary merges).
+*   Issues with **hydrolocations** (Points of Interest, POIs) such as incorrect indexing to flowpaths or inaccurate coordinates.
+*   Proposals for integrating **large external datasets**.
 
-By using predefined **issue templates**, we ensure that all necessary information is collected in a consistent and structured format, Therefore streamlining the process of managing and resolving reported errors.
+By using our structured issue templates, you help us gather precise information, which facilitates automated validation and allows the Hydrofabric team to efficiently address and integrate your feedback.
 
 ---
 
-## 📝 Issue Types
+## 🛠️ How It Works
 
-There are six primary types of issues you can report, each with its own dedicated GitHub Issue Template.
+1.  **Report an Issue:** You select an appropriate template and fill in the required details.
+2.  **Automatic Title Update:** The issue title will be automatically updated based on the primary identifier you provide.
+3.  **Validation:** A GitHub Actions workflow automatically checks your submission for completeness based on the template's requirements. If issues are found, a comment is added to your issue.
 
-### 📍 Hydrolocations
+---
 
-*   **Description:** Use this template to report issues with **hydrolocations** (Points of Interest on flowpaths), such as incorrect assignments, outdated information, or the need to add new hydrolocation features.
-*   **Template:** [Open Hydrolocations Issue Template](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=06-hydrolocations.yml) 
+## 📍 Identifying Features
+
+To report issues accurately, you'll often need to identify specific hydrofabric features. Please use the official **[Hydrofabric Viewer Map](https://spatial.dev.water.noaa.gov/view/hydrofabric)** to find:
+
+*   **Item Identifiers (IDs)** for flowpaths or divides.
+*   **Topology toids** (often the same as the item identifier for flowpaths).
+*   **POI Identifiers** for hydrolocations.
+*   **VPUs** (Vector Processing Units) where features are located.
+
+---
+
+## 📝 Issue Types & Templates
+
+We offer **eight** distinct issue templates to cover various scenarios. Please choose the one that best fits your issue.
+
+### 🗺️ Flowpaths: Topo Fixes
+
+*   **Purpose:** Report general **topology-related fixes** for flowpaths. This includes issues like missing connections, incorrect flow direction, or other structural problems not covered by specific merge/remove templates.
+*   **Template:** [`01-topo-fixes.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=01-topo-fixes.yml)
 *   **Key Fields:**
-    *   `Item Identifier`: Hydrolocation feature ID (e.g., `wb-620629`)
-    *   `POI Identifier`: The hydrolocation poi_id (e.g., 3366)
-    *   `VPU`: The VPU the feature belongs to (e.g., `01`)
-    *   `Issue Type`: (e.g., `"Not indexed to the right flowpath"`, `"Add a hydrolocation feature"`)
-    *   `New ID`: Required if "Not indexed to the right flowpath" is selected (e.g., `wb-620630`)
-    *   `Coordinates`: `Latitude`, `Longitude`, `EPSG Code` if adding a new feature (e.g., `34.05`, `-118.25`, `5070`)
-    *   `Hydrofabric Version`: The version affected (e.g., `v2.2`)
-    *   `Description of the issue`: Detailed explanation (with option to attach files)
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single instance or many.
+    *   `VPU(s)`: e.g., `01`
+    *   `Item Identifier(s)`: ID of the problematic flowpath(s).
+    *   `Topology toid(s)`: The `toid` of the flowpath(s).
+    *   `Describe the issue(s)`: Detailed explanation.
 
-### 🗺️ Topo Fixes
+### 🔗 Flowpaths: Merge Flowpaths
 
-*   **Description:** Use this template to report general **topology-related fixes**, such as missing or incorrectly directed flowpaths, or connectivity issues not covered by merge/remove templates.
-*   **Template:** [Open Topo Fixes Issue Template](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=01-topo-fixes.yml) 
+*   **Purpose:** Request the **merging of multiple existing flowpaths** into a single, new flowpath. The new flowpath identifier should be the most downstream of the IDs to be merged.
+*   **Template:** [`02-merge-flowpaths.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=02-merge-flowpaths.yml)
 *   **Key Fields:**
-    *   `Item Identifier`: The feature ID related to the topo issue (e.g., `wb-1455862`)
-    *   `Topology toid`: Specific topology ID if different (e.g., `wb-1455862`)
-    *   `VPU`: The VPU the feature belongs to (e.g., `01`)
-    *   `Hydrofabric Version`: The version affected (e.g., `v2.2`)
-    *   `Description of the issue`: Detailed explanation (with option to attach files)
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single or many merge operations.
+    *   `VPU(s)`: e.g., `01`
+    *   `New Item Identifier(s)`: The ID of the **resulting** merged flowpath.
+    *   `New Topology toid(s)`: The `toid` of the **resulting** merged flowpath.
+    *   `List(s) of IDs to Merge`: Comma-separated list(s) of existing flowpath IDs to be merged.
+    *   `Describe the merge operations`
 
-### ➡️ Merge Flowpaths
+### ❌ Flowpaths: Remove Flowpaths
 
-*   **Description:** Use this template to report issues where multiple flowpaths need to be **merged** into a single flowpath.
-*   **Template:** [Open Merge Flowpaths Issue Template](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=02-merge-flowpaths.yml) 
+*   **Purpose:** Request the **removal of specific flowpaths** that are erroneous, redundant, or no longer representative.
+*   **Template:** [`04-remove-flowpaths.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=04-remove-flowpaths.yml)
 *   **Key Fields:**
-    *   `Item Identifier`: The **new** flowpath ID after merging (e.g., `wb-620629`)
-    *   `Topology toid`: Related topology ID (e.g., `wb-609109`)
-    *   `IDs to Merge`: A **comma-separated list** of flowpath IDs to be merged (e.g., `wb-620629,wb-620609,wb-620610`)
-    *   `VPU`: The VPU these features belong to (e.g., `01`)
-    *   `Hydrofabric Version`: The version affected (e.g., `v2.2`)
-    *   `Description of the issue`: Detailed explanation (with option to attach files)
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single or many flowpaths for removal.
+    *   `VPU(s)`: e.g., `01`
+    *   `Item Identifier(s) to Remove`: ID(s) of the flowpath(s) to be deleted.
+    *   `Describe why these flowpaths should be removed`
 
-### 🔄 Reid Divide
+### 🔄 Divides: Reid Divide
 
-*   **Description:** Use this template to report issues requiring the **re-identification** (changing the ID) of a divide feature.
-*   **Template:** [Open Reid Divide Issue Template](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=03-reid-divide.yml) 
+*   **Purpose:** Report the need to **re-identify (change the ID of) an existing catchment divide**.
+*   **Template:** [`03-reid-divide.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=03-reid-divide.yml)
 *   **Key Fields:**
-    *   `Item Identifier`: The **current** divide ID (e.g., `cat-620629`)
-    *   `New ID`: The **desired new** divide ID (e.g., `cat-620630`)
-    *   `VPU`: The VPU the divide belongs to (e.g., `01`)
-    *   `Hydrofabric Version`: The version affected (e.g., `v2.2`)
-    *   `Description of the issue`: Detailed explanation (with option to attach files)
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single or many reid operations.
+    *   `VPU(s)`: e.g., `01`
+    *   `Current Item Identifier(s)`: The existing ID of the divide.
+    *   `New ID(s)`: The desired new ID for the divide.
+    *   `Describe the reid operations`
 
-### ❌ Remove Flowpaths
+### 🤝 Divides: Union Divides
 
-*   **Description:** Use this template to report **flowpaths that need to be removed** from the hydrofabric.
-*   **Template:** [Open Remove Flowpaths Issue Template](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=04-remove-flowpaths.yml) 
+*   **Purpose:** Request the **unioning of multiple existing catchment divides** into a single, new divide. The new divide identifier should be the most downstream or representative ID.
+*   **Template:** [`05-union-divides.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=05-union-divides.yml)
 *   **Key Fields:**
-    *   `Item Identifier`: The flowpath ID to **remove** (e.g., `wb-620629`)
-    *   `VPU`: The VPU the flowpath belongs to (e.g., `01`)
-    *   `Hydrofabric Version`: The version affected (e.g., `v2.2`)
-    *   `Description of the issue`: Detailed explanation (with option to attach files)
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single or many union operations.
+    *   `VPU(s)`: e.g., `01`
+    *   `New Item Identifier(s)`: The ID of the **resulting** unioned divide.
+    *   `List(s) of IDs to Merge`: Comma-separated list(s) of existing divide IDs to be unioned.
+    *   `Describe the union operations`
 
-### 🤝 Union Divides
+### ➕ Hydrolocations: Hydrolocation Additions
 
-*   **Description:** Use this template to report issues where multiple divide features need to be **unionized** (merged spatially and assigned a single ID).
-*   **Template:** [Open Union Divides Issue Template](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=05-union-divides.yml) 
+*   **Purpose:** Report issues with **hydrolocations (Points of Interest)** specifically related to their **indexing**. This is primarily for cases where a POI is snapped to the wrong flowpath and needs to be moved to the correct one.
+*   **Template:** [`06-hydrolocations-additions.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=06-hydrolocations-additions.yml)
 *   **Key Fields:**
-    *   `Item Identifier`: The **new** divide ID after union (e.g., `cat-620629`)
-    *   `IDs to Merge`: A **comma-separated list** of divide IDs to be unioned (e.g., `cat-620629,cat-620630,cat-620631`)
-    *   `VPU`: The VPU these features belong to (e.g., `01`)
-    *   `Hydrofabric Version`: The version affected (e.g., `v2.2`)
-    *   `Description of the issue`: Detailed explanation (with option to attach files)
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single or many corrections.
+    *   `VPU(s)`: e.g., `01`
+    *   `Item Identifier(s) (Current Flowpath)`: The ID of the flowpath the POI is *currently (incorrectly)* on.
+    *   `POI Identifier(s)`: The ID of the POI itself (e.g., a gauge ID).
+    *   `New Correct Flowpath ID(s)` OR `New ID`: The ID of the flowpath the POI *should* be on.
+    *   `Describe the issue / Additional Details`
+
+### ✨ Hydrolocations: Hydrolocation Geometry Cleanup
+
+*   **Purpose:** Report issues with the **precise geographic coordinates of existing hydrolocations**. Use this if a POI is on the correct flowpath but its snapped point (lat/lon) needs adjustment.
+*   **Template:** [`07-hydrolocation-geometry-cleanup.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=07-hydrolocation-geometry-cleanup.yml)
+*   **Key Fields:**
+    *   `Hydrofabric Version`: e.g., `v2.2`
+    *   `Report Mode`: Single or many geometry cleanups.
+    *   `VPU(s)`: e.g., `01`
+    *   `Item Identifier(s) (Flowpath)`: The ID of the flowpath the POI is on.
+    *   `POI Identifier(s) for Geometry Cleanup`: The ID of the POI.
+    *   `New Latitude(s)`, `New Longitude(s)`, `New EPSG Code(s)`: The corrected coordinates and their spatial reference.
+    *   `Describe the geometry issue / Additional Details`
+
+### 💾 Data: Large Data Submission
+
+*   **Purpose:** Inform the Hydrofabric team about a **large dataset** you believe would be valuable for integration. This is for datasets too extensive for direct submission through other templates.
+*   **Template:** [`08-large-data-submission.yml`](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new?template=08-large-data-submission.yml)
+*   **Key Fields:**
+    *   `Relevant Hydrofabric Version(s)`: e.g., `v2.2`
+    *   `Brief Description of Data (for Title)`: A concise summary used in the issue title.
+    *   `Detailed Description of the Data`: Comprehensive details about the dataset (type, coverage, format, source, use cases, size, contact info).
+    *   `Data URL (Optional)`: A link to access or learn more about the data.
+*   **Note:** The Hydrofabric team will review your submission and reach out to discuss implementation and data transfer.
 
 ---
 
@@ -131,39 +188,55 @@ Follow these simple steps to report an issue effectively using the appropriate t
 
 1.  Navigate to the **"Issues"** tab in this repository.
 2.  Click the **"New issue"** button.
-3.  Browse the available templates and choose the one that best matches the type of issue you want to report (e.g., `Map Error: Hydrolocations` or `Map Error: Topo Fixes`).
-4.  Click on the selected template.
+3.  Browse the available templates and choose the one that best matches the type of issue you want to report (e.g., `Flowpaths: Merge Flowpaths` or `Divides: Reid Divide`).
+4.  The word before the colon sign represents the the target layer name, and words that are after represent the issue type. Click on the selected template.
 
 ### Filling Out the Template
 
-1.  **Required Fields:** Pay close attention to fields marked with an asterisk (\*). Ensure all required information is accurately provided (**except for title that should not be changed**).
-2.  **Coordinates:** If providing coordinates, enter **numerical values** for `Latitude` and `Longitude`, and the **numerical EPSG code** (e.g., `5070` for NAD83 / Conus Albers).
-3.  **New ID / IDs to Merge/Union:** For relevant issue types, follow the instructions carefully regarding providing a `New ID` or a `comma-separated list` of IDs.
-4.  **Description:** Provide a clear and concise description of the issue. Include context, observed behavior, and expected behavior. You can also **upload images** directly into the description field by dragging and dropping them.
-5.  **Hydrofabric Version:** Select the version of the hydrofabric you are working with from the dropdown.
+1.  **Title:** For most templates, the title includes a placeholder like `<item-identifier>` or `<brief-description>`. **Do not manually change this part of the title.** It will be automatically updated by our system based on the first relevant identifier you provide in the form.
+2.  **Required Fields:** Fields marked with a red asterisk (`*`) are mandatory. Please fill them out accurately.
+3.  **Hydrofabric Version:** Always select the version of the Hydrofabric your issue pertains to.
+4.  **Report Mode:** Many templates offer a "Report Mode" (e.g., "Report a single instance" vs. "Report many instances").
+    *   Choose **"Report a single instance"** if your issue pertains to one specific item or operation.
+    *   Choose **"Report many instances"** (or similar wording) if you have a list of items/operations of the same type. This allows you to paste data in columns (i.e., from an excel sheet but not including the header).
+5.  **Identifiers & Coordinates:**
+    *   Provide numerical IDs as requested.
+    *   For coordinates (`Latitude`, `Longitude`) any coordinate system is accepted as long as a EPSG code is provided per each item. Provide the numerical `EPSG Code` for the coordinates (e.g., `4326` for WGS84, `5070` for NAD83/Conus Albers).
+6.  **Descriptions:** Be as clear and concise as possible.
+    *   Explain the problem and why it's an issue.
+    *   Describe the expected correct state if known.
+    *   You can **drag and drop images or files** directly into the description text areas to provide visual context. This is highly encouraged!
+
+### Multi-Instance Reporting
+
+When a template's "Report Mode" is set to "Report many instances (paste columns of data)" or similar:
+
+*   For fields like `Item Identifier(s)`, `VPU(s)`, `New Latitude(s)`, etc., you can paste multiple lines of data, typically one entry per line.
+*   **Ensure the number of lines corresponds across related fields** (e.g., if you list 5 Item Identifiers, you should provide 5 corresponding VPUs, as specified in the field description).
 
 ### Tips for Reporting
 
-*   ✅ Use the provided placeholders and examples in the template as guides.
-*   🤷‍♀️ If you’re unsure about a specific field, refer to the description provided within the template itself or add a note in the main description.
-*   📍 For coordinates, double-check the `EPSG code` to avoid validation errors.
-*   📸 Screenshots or maps highlighting the issue location are highly encouraged and can be easily added to the description.
-
+*   ✅ **Be Specific:** The more precise your information, the easier it is to address the issue.
+*   🗺️ **Use the Map:** Refer to the [Hydrofabric Viewer Map](https://spatial.dev.water.noaa.gov/view/hydrofabric) to get accurate IDs and VPUs.
+*   📸 **Screenshots are Great:** A picture is worth a thousand words. Highlight the problematic area.
+*   🤷‍♀️ **If Unsure:** If you're uncertain about a field, provide your best guess and explain any uncertainties in the description.
+*   🚫 **One Issue per Report (Generally):** Unless using the "Report many instances" feature for similar items, please create separate GitHub issues for distinct problems.
 ---
 
-## 🤖 Validation and Automation
+## 🤖 Automation & Validation
 
-Our workflow is designed to help ensure data quality and streamline processing:
+To ensure data quality and streamline our processes:
 
-*   **Automatic Validation:** When you submit or edit an issue, a GitHub Action is triggered to automatically validate the input based on the specific issue type and the data you've entered.
-    *   *Example:* If you select `"Add a hydrolocation feature"` in the Hydrolocations template, the action verifies that `Latitude`, `Longitude`, and `EPSG Code` are provided.
-    *   *Example:* If you select `"Not indexed to the right flowpath"`, the action checks that a `New ID` is present.
-*   **Feedback:** If the validation fails due to missing required fields or incorrect formatting, the GitHub Action will automatically post a **comment** on the issue, clearly indicating what needs to be corrected.
+1.  **Automatic Title Update:** Upon issue creation or edit, a GitHub Action updates the issue title using the primary identifier you provided (e.g., `<item-identifier>`).
+2.  **Input Validation:** Another GitHub Action automatically validates your submission based on the template's requirements.
+    *   *Example (Hydrolocation Additions):* If you specify an issue with indexing, it checks if you've provided the "New Correct Flowpath ID."
+    *   *Example (Hydrolocation Geometry Cleanup - Coordinates): It verifies provided "Latitude(s)", "Longitude(s)", and "EPSG Code(s)" are valid using coordinate transformation.
+3.  **Automated Feedback:** If validation fails (e.g., a required field is missing for the chosen options), the GitHub Action will post a **comment on your issue**, outlining what needs to be corrected. Please address these comments to ensure your issue can be processed.
 
 ---
 
 ## 🌐 Additional Information
 
-*   **Support:** For general questions about the hydrofabric, issues with the templates or automation workflows, or other related inquiries, please [open a general issue here](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new) (if a general template exists, otherwise use the new issue button) or reach out to the maintainers.
+*   **Questions?** For general questions about the Hydrofabric, this issue reporting process, or if your issue doesn't fit any template, please [open a new general issue](https://github.com/lynker-spatial/Community_Hydrofabric/issues/new) (you can choose to open a blank issue if no general template is suitable) or contact the developers.
 
-Thank you for helping us improve the Community Hydrofabric!
+Thank you for your contributions to improving the Community Hydrofabric! Your detailed reports are invaluable.
