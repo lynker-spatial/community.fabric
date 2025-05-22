@@ -1,0 +1,65 @@
+# .github/ISSUE_TEMPLATE/08-large-data-submission.yml
+
+name: "Data: Large Data Submission"
+description: "Submit information about a large dataset for potential integration."
+title: "[Hydrofabric] Data <brief-description> Large Data Submission"
+labels:
+  - Hydrofabric-large-data-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The title will be automatically updated based on your "Brief Description of Data" below.
+        Use this form to inform the Hydrofabric team about a large dataset you believe would be valuable to integrate.
+  - type: dropdown
+    id: hf-version
+    attributes:
+      label: "Relevant Hydrofabric Version(s)"
+      description: "Select the Hydrofabric version(s) this data might relate to or enhance."
+      options:
+        - v2.2
+        - v2.3
+        - Not Specific / All Versions
+    validations:
+      required: true
+  - type: textarea
+    id: brief-data-description 
+    attributes:
+      label: "Brief Description of Data (for Title)"
+      description: |
+        Provide a concise summary of the dataset (approx. 5-10 words). This will be used to populate the <brief-description> part of the issue title.
+        Example: "Nationwide Bridges"
+      placeholder: "E.g., Bridge identifier table for CONUS"
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: detailed-data-description 
+    attributes:
+      label: "Detailed Description of the Data"
+      description: |
+        Please describe the dataset in detail. Include information such as:
+        - Type of data (e.g., vector, raster, tabular, model outputs)
+        - Spatial coverage and resolution
+        - Temporal coverage and resolution (if applicable)
+        - Data format(s)
+        - Source of the data (organization, project, publication)
+        - Potential use cases or benefits for the Hydrofabric
+        - Approximate size of the dataset
+        - Your contact information (email, if different from GitHub account) for follow-up.
+      placeholder: "The dataset consists of..."
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: data-url
+    attributes:
+      label: "Data URL (Optional)"
+      description: "If the data is publicly accessible or you have a preferred sharing location, please provide a URL (e.g., FTP link, API endpoint, Google Drive, S3 bucket path)."
+      placeholder: "https://example.com/data/my_large_dataset.zip"
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        The Hydrofabric team will review your submission and will reach out to you to discuss implementation details and data transfer methods. Thank you for your contribution!

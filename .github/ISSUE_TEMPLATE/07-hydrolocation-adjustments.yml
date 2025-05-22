@@ -1,0 +1,118 @@
+# .github/ISSUE_TEMPLATE/07-hydrolocation-adjustments.yml
+
+name: "Hydrolocations: Hydrolocations Adjustments"
+description: "Report adjustments needed for existing hydrolocations (e.g., coordinate changes)."
+title: "[Hydrofabric] Hydrolocations <hl_id> Adjustment" 
+labels:
+  - Hydrofabric-hydrolocation-adjustments
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The title should not be changed and will be automatically updated based on the Item Identifier.
+        Thanks for reporting a hydrofabric issue!
+        Use this template to report adjustments for **existing** hydrolocations, such as correcting their geographic coordinates.
+        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
+  - type: dropdown
+    id: hf-version
+    attributes:
+      label: "Hydrofabric Version"
+      description: "Select the type of hydrofabric version."
+      options:
+        - v2.2
+        - v2.3
+    validations:
+      required: true
+  - type: dropdown
+    id: report-mode
+    attributes:
+      label: "Report Mode"
+      description: "Select if you are reporting a single geometry cleanup or multiple."
+      options:
+        - "Report a single adjustment"
+        - "Report many adjustments (paste columns of data)"
+    validations:
+      required: true
+  - type: textarea 
+    id: vpu
+    attributes:
+      label: "VPU(s)" 
+      description: |
+        The VPU(s) where the hydrolocation(s) needing geometry cleanup are located.
+        If 'Report many...', paste one VPU per line. 
+      placeholder: |
+        01
+        02
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: item-identifier-hlid 
+    attributes:
+      label: "Item Identifier(s) (hl_id)"
+      description: |
+        The existing Hydrolocation ID (`hl_id`) of the POI requiring adjustment. This will be used in the issue title.
+        One per line if reporting many.
+      placeholder: |
+        64615
+        64616
+      render: shell
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Please provide the **new/corrected** coordinates for the hydrolocation(s).
+        **Coordinates Example:**
+        - Latitude: 37.7749
+        - Longitude: -122.4194
+        - EPSG Code: 4326 (WGS84)
+  - type: textarea
+    id: new-latitude
+    attributes:
+      label: "New Latitude(s)"
+      description: |
+        The new/corrected latitude coordinate(s) for the POI(s).
+        One per line if reporting many.
+      placeholder: |
+        37.7749
+        36.1699
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: new-longitude
+    attributes:
+      label: "New Longitude(s)"
+      description: |
+        The new/corrected longitude coordinate(s) for the POI(s).
+        One per line if reporting many.
+      placeholder: |
+        -122.4194
+        -115.1398
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: new-epsg-code
+    attributes:
+      label: "New EPSG Code(s)"
+      description: |
+        The numerical EPSG code(s) for the new/corrected coordinates.
+        One per line if reporting many, or single on first line if all same.
+      placeholder: |
+        4326
+        5070
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: "Describe the adjustment needed / Additional Details"
+      description: |
+        Provide a summary of why the adjustment is needed. This description applies to all instances if reporting many.
+        **Optional:** You can upload an image by dragging and dropping it.
+      placeholder: "E.g., This POI is snapped too far upstream from the actual confluence..."
+    validations:
+      required: false

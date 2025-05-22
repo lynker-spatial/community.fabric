@@ -1,50 +1,19 @@
 # .github/ISSUE_TEMPLATE/02-merge-flowpaths.yml
 
-name: "Map Error: Merge Flowpaths"
+name: "Flowpaths: Merge Flowpaths"
 description: "Report flowpath merging issues."
-title: "[Map Error] Merge Flowpaths"
+title: "[Hydrofabric] Flowpaths <item-identifier> Merge Flowpaths"
 labels:
-  - map-error-merge-flowpaths
+  - Hydrofabric-merge-flowpaths
 body:
   - type: markdown
     attributes:
       value: |
         The title should not be changed and will be automatically updated based on the Item Identifier.
-        Thanks for reporting a map item error!
-        Please provide the required details below.
-        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
-  - type: input
-    id: item-identifier
-    attributes:
-      label: "Item Identifier"
-      description: "The new flowpath id (e.g., wb-620629)."
-      placeholder: "wb-620629"
-    validations:
-      required: true
-  - type: input
-    id: topology-toid
-    attributes:
-      label: "Topology toid"
-      description: "The toid of the feature (e.g., wb-609109)."
-      placeholder: "wb-609109"
-    validations:
-      required: true
-  - type: input
-    id: ids-to-merge
-    attributes:
-      label: "IDs to Merge"
-      description: "List of flowpaths ids to merge (e.g., 'wb-620629,wb-620609,wb-620589,wb-609109')."
-      placeholder: "wb-620629,wb-620609,wb-620589,wb-609109"
-    validations:
-      required: true
-  - type: input
-    id: vpu
-    attributes:
-      label: "VPU"
-      description: "The VPU where the issue occurs (e.g., 01)."
-      placeholder: "01"
-    validations:
-      required: true
+        Thanks for reporting a hydrofabric issue!
+        Please provide the required details below. 
+        **Important Note: the new flowpath identifier needs to be the most downstream of the IDs to merge**
+        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
   - type: dropdown
     id: hf-version
     attributes:
@@ -52,14 +21,82 @@ body:
       description: "Select the type of hydrofabric version."
       options:
         - v2.2
-        - other
+        - v2.3
+    validations:
+      required: true  
+  - type: dropdown
+    id: report-mode
+    attributes:
+      label: "Report Mode"
+      description: "Select if you are reporting a single merge operation or multiple separate merge operations."
+      options:
+        - "Report a single merge operation"
+        - "Report many merge operations (paste columns of data)"
+    validations:
+      required: true
+  - type: textarea 
+    id: vpu 
+    attributes:
+      label: "VPU(s)" 
+      description: |
+        The VPU(s) where the merge operation(s) occur (e.g., 01).
+        If 'Report many merge operations' is selected, paste one VPU per line, corresponding to each new Item Identifier (copy and paste column as plain text without header)
+      placeholder: |
+        01
+        01
+        02
+      render: shell
+    validations:
+      required: true
+  - type: textarea 
+    id: item-identifier 
+    attributes:
+      label: "New Item Identifier(s)" 
+      description: |
+        The **new** flowpath id(s) after merging (e.g., 620629). One per line if reporting many operations (copy and paste column as plain text without header).
+        This ID should be the most downstream of the IDs being merged for that operation.
+      placeholder: |
+        620629
+        730510
+        840220
+      render: shell
+    validations:
+      required: true
+  - type: textarea 
+    id: topology-toid 
+    attributes:
+      label: "New Topology toid(s)" 
+      description: |
+        The toid(s) of the **new** merged feature(s) (e.g., 609109). One per line if reporting many operations (copy and paste column as plain text without header).
+      placeholder: |
+        609109
+        730510
+        840220
+      render: shell
+    validations:
+      required: true
+  - type: textarea 
+    id: ids-to-merge 
+    attributes:
+      label: "List(s) of IDs to Merge" 
+      description: |
+        For each new item identifier (each line above), provide the corresponding list of existing flowpath IDs to be merged.
+        **Each line here should be a comma-separated list of IDs** (e.g., '620629,620609,609109').
+        Ensure the number of lines here matches the number of 'New Item Identifier(s)'.
+      placeholder: |
+        620629,620609,620589,609109
+        730510,730500
+        840220,840200,840190
+      render: shell
     validations:
       required: true
   - type: textarea
-    id: issue-description
+    id: issue-description 
     attributes:
-      label: "Describe the issue"
-      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
-      placeholder: "E.g., these flowpaths need to be merged..."
+      label: "Describe the merge operations"
+      description: |
+        Provide a summary of why these merge operations are needed. This description applies to all operations if reporting many.
+        **Optional:** You can upload an image by dragging and dropping it into this description box or by using the 'Attach files' feature below.
+      placeholder: "E.g., these sets of flowpaths represent single reaches and need to be merged for network continuity..."
     validations:
       required: false

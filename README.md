@@ -1,4 +1,4 @@
-# 🛠️ Community Hydrofabric Issue Tracking:<a href="https://github.com/lynker-spatial/Community_Hydrofabric.git"><img src="assets/images/cm_logo.png" align="right" width="35%"/></a>
+# 🛠️ Community Hydrofabric Issue Tracking:<a href="https://github.com/lynker-spatial/Community_Hydrofabric.git"><img src="assets/images/cm_logo.png" align="right" width="45%"/></a>
 
 [![Workflow Status](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-hydrofabric-issues.yml/badge.svg)](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-hydrofabric-issues.yml)
 ![GitHub issues](https://img.shields.io/github/issues/lynker-spatial/Community_Hydrofabric)
@@ -40,6 +40,7 @@ To ensure consistency and enable automation, we use **GitHub Issue Templates**. 
     *   [Filling Out the Template](#filling-out-the-template)
     *   [Multi-Instance Reporting](#multi-instance-reporting)
     *   [Tips for Reporting](#tips-for-reporting)
+*   [📖 Tutorial ](#tutorials)
 *   [🤖 Automation & Validation](#-automation--validation)
 *   [📊 CSV Export](#-csv-export)
 *   [🌐 Additional Information](#-additional-information)
@@ -221,6 +222,124 @@ When a template's "Report Mode" is set to "Report many instances (paste columns 
 *   📸 **Screenshots are Great:** A picture is worth a thousand words. Highlight the problematic area.
 *   🤷‍♀️ **If Unsure:** If you're uncertain about a field, provide your best guess and explain any uncertainties in the description.
 *   🚫 **One Issue per Report (Generally):** Unless using the "Report many instances" feature for similar items, please create separate GitHub issues for distinct problems.
+---
+
+## 📖 Tutorials
+### Example 1:
+**Issue:** Mainstem 1970573. A single flowpath crosses two divides with an extra dangler hanging out (ID 10016831)
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example1.png" width="50%">
+</div>
+<div>&nbsp;</div>
+
+**Required Actions:** 
+
+Remove: flowpath 10016831 
+- Select `Flowpaths: Remove Flowpaths` issue template
+- Fill the issue and provide the screen shot
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example1_issue1.png" width="70%">
+</div>
+<div>&nbsp;</div>
+
+- Create.
+
+Merge: catchments 10016831 and 10016708, keep ID 10016708
+- Select `Divides: Union Divides` issue template 
+- Fill the issue and provide the screen shot
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example1_issue2.png" width="70%">
+</div>
+<div>&nbsp;</div>
+
+- Create.
+
+### Example 2:
+**Issue:** 1937285 nex-1858281 wb-1858281 NaN NaN ... NaN nexus 10U None </br>
+Mainstem: 1060393 </br>
+~1/2 of mainstem 1060393 is an artificial path that drains internal sink divides. The result is many flowlines without a divide.</br>
+
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example2.png" width="50%">
+</div>
+<div>&nbsp;</div>
+
+**Required Actions:** 
+Here is an instance where one provides many instances by selecting `many instances ...` and copy and pasting columns of ids.
+Remove: flowlines 10152753, 10152754, 10126589, 10125886, 10125883, 10125884, 10125885, 10126574, 10125887, 10126657, 10126458
+- Select `Flowpaths: Remove Flowpaths` issue template
+- Fill the issue and provide the screen shot
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example2_issue1.png" width="70%">
+</div>
+<div>&nbsp;</div>
+
+- Create.
+
+Change Topology: Divert into Natural Channel rather then artificial path </br>
+10125872 --> 10125873
+- Select `Flowpaths: Topo Fixes` issue template 
+- Fill the issue and provide the screen shot
+- Create.
+
+### Example 3:
+**Issue:** 1941128 nex-1865691 wb-1865691 NaN NaN ... NaN nexus 10U None </br>
+Mainstem: 1083524 </br>
+
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example3.png" width="50%">
+</div>
+<div>&nbsp;</div>
+
+**Required Actions:** 
+This involves filling four issue types:
+
+Merge flowpaths: </br>
+10179144, 10179145 --> ID: 10179145, toID: 10179945
+10179945, 10179154, 10179155 --> ID: 10179945 toID: 10179156
+- Select `Flowpaths: Merge Flowpaths` issue template 
+- Fill the issue and provide the screen shot
+- Create.
+
+Merge divides: </br>
+10179150, 10179151 --> ID: 10179145, toID: 10179945
+10179945, 10179153, 10179152 --> ID: 10179945 toID: 10179156
+- Select `Divides: Union Divides` issue template 
+- Fill the issue and provide the screen shot
+- Create.
+
+Remove Flowpaths: </br>
+10179150, 10179151, 10179147, 10179146, 10179153, 10179148, 10179152
+- Select `Flowpaths: Remove Flowpaths` issue template 
+- Fill the issue and provide the screen shot
+- Create.
+
+Change Topology: </br>
+10179149 --> 10179145
+10179831 --> 10179145
+- Select `Flowpaths: Topo Fixes` issue template 
+- Fill the issue and provide the screen shot
+- Create.
+
+### Example 4:
+**Issue:** There is a USGS gage that needs to be included in the hydrolocations </br>
+
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/example4.png" width="50%">
+</div>
+<div>&nbsp;</div>
+
+Hydrolocations: Hydrolocation Additions
+- Select `Hydrolocations: Hydrolocation Additions` issue template 
+- Fill the issue and provide the screen shot
+- Create.
+
+### Example 5:
+**Issue:** We want to share our bridge inventory to be included and indexed to refrence fabric </br>
+Since this is dataset is large inventory of data, only general description of data and contact information is required. Optionally one can include a url to the data if publicly available.
+- Select `Data: Large Data Submission` issue template 
+- Fill the issue and provide the screen shot
+- Create.
 ---
 
 ## 🤖 Automation & Validation

@@ -1,34 +1,18 @@
 # .github/ISSUE_TEMPLATE/04-remove-flowpaths.yml
 
-name: "Map Error: Remove Flowpaths"
+name: "Flowpaths: Remove Flowpaths"
 description: "Report flowpaths that need to be removed."
-title: "[Map Error] <item-identifier> Remove Flowpaths"
+title: "[Hydrofabric] Flowpaths <item-identifier> Remove Flowpaths"
 labels:
-  - reid_divide-remove-flowpaths
+  - Hydrofabric-remove-flowpaths
 body:
   - type: markdown
     attributes:
       value: |
         The title should not be changed and will be automatically updated based on the Item Identifier.
-        Thanks for reporting a map item error!
+        Thanks for reporting a hydrofabric issue!
         Please provide the required details below.
-        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
-  - type: input
-    id: item-identifier
-    attributes:
-      label: "Item Identifier"
-      description: "The flowpath id to remove (e.g., wb-620629)."
-      placeholder: "wb-620629"
-    validations:
-      required: true
-  - type: input
-    id: vpu
-    attributes:
-      label: "VPU"
-      description: "The VPU where the issue occurs (e.g., 01)."
-      placeholder: "01"
-    validations:
-      required: true
+        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
   - type: dropdown
     id: hf-version
     attributes:
@@ -36,14 +20,54 @@ body:
       description: "Select the type of hydrofabric version."
       options:
         - v2.2
-        - other
+        - v2.3
     validations:
       required: true
-  - type: textarea
-    id: issue-description
+  - type: dropdown
+    id: report-mode
     attributes:
-      label: "Describe the issue"
-      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
-      placeholder: "E.g., this flowpath should be removed..."
+      label: "Report Mode"
+      description: "Select if you are reporting a single flowpath for removal or multiple flowpaths."
+      options:
+        - "Report a single flowpath for removal"
+        - "Report many flowpaths for removal (paste columns of data)"
     validations:
-      required: false
+      required: true
+  - type: textarea 
+    id: vpu 
+    attributes:
+      label: "VPU(s)" 
+      description: |
+        The VPU(s) where the flowpath(s) to be removed are located (e.g., 01).
+        If 'Report many flowpaths' is selected, paste one VPU per line, corresponding to each Item Identifier.
+      placeholder: |
+        01
+        01
+        02
+      render: shell
+    validations:
+      required: true 
+  - type: textarea 
+    id: item-identifier 
+    attributes:
+      label: "Item Identifier(s) to Remove" 
+      description: |
+        The flowpath id(s) to be removed (e.g., 620629).
+        If 'Report many flowpaths' is selected, paste one identifier per line.
+      placeholder: |
+        620629
+        730510
+        840220
+      render: shell
+    validations:
+      required: true 
+  - type: textarea
+    id: issue-description 
+    attributes:
+      label: "Describe why these flowpaths should be removed"
+      description: |
+        Provide a summary of why these flowpath(s) need to be removed. This description applies to all flowpaths if reporting many.
+        **Optional:** You can upload an image by dragging and dropping it into this description box or by using the 'Attach files' feature below.
+      placeholder: "E.g., these flowpaths are redundant, incorrect, or no longer exist..."
+    validations:
+      required: false 

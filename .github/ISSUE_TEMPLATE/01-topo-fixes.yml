@@ -1,42 +1,18 @@
 # .github/ISSUE_TEMPLATE/01-topo-fixes.yml
 
-name: "Map Error: Topo Fixes"
-description: "Report topology fixes for map items." 
-title: "[Map Error] <item-identifier> Topo Fixes"
+name: "Flowpaths: Topo Fixes"
+description: "Report Flowpaths topology fixes for map items." 
+title: "[Hydrofabric] Flowpaths <item-identifier> Topo Fixes"
 labels:
-  - map-error-topo-fixes
+  - Hydrofabric-topo-fixes
 body:
   - type: markdown
     attributes:
       value: |
         The title should not be changed and will be automatically updated based on the Item Identifier.
-        Thanks for reporting a map item error!
+        Thanks for reporting a hydrofabric issue!
         Please provide the required details below.
-        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
-  - type: input
-    id: item-identifier
-    attributes:
-      label: "Item Identifier"
-      description: "The identifier of the item (e.g., wb-1455862)."
-      placeholder: "wb-1455862"
-    validations:
-      required: true
-  - type: input
-    id: topology-toid
-    attributes:
-      label: "Topology toid"
-      description: "The toid of the feature (e.g., wb-1455862)."
-      placeholder: "wb-1455862"
-    validations:
-      required: true
-  - type: input
-    id: vpu
-    attributes:
-      label: "VPU"
-      description: "The VPU where the issue occurs (e.g., 01)."
-      placeholder: "01"
-    validations:
-      required: true
+        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
   - type: dropdown
     id: hf-version
     attributes:
@@ -44,14 +20,70 @@ body:
       description: "Select the type of hydrofabric version."
       options:
         - v2.2
-        - other
+        - v2.3
+    validations:
+      required: true  
+  - type: dropdown
+    id: report-mode
+    attributes:
+      label: "Report Mode"
+      description: "Select if you are reporting a single instance or multiple instances."
+      options:
+        - "Report a single instance"
+        - "Report many instances (simply paste columns of data)"
+    validations:
+      required: true
+  - type: textarea 
+    id: vpu
+    attributes:
+      label: "VPU(s)" 
+      description: | 
+        The VPU(s) where the issue(s) occur (e.g., 01).
+        If 'Report many instances' is selected, paste one VPU per line (copy and paste column as plain text without header), corresponding to each Item Identifier.
+        Ensure the number of lines matches the Item Identifiers. 
+      placeholder: |
+        01
+        02
+        01
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: item-identifier
+    attributes:
+      label: "Item Identifier(s)"
+      description: |
+        The identifier(s) of the item(s) (e.g., 1455862).
+        If 'Report many instances' is selected, paste one identifier per line (copy and paste column as plain text without header). Each line will become a separate entry in the CSV.
+      placeholder: |
+        1455862
+        1455863
+        1455864
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: topology-toid
+    attributes:
+      label: "Topology toid(s)"
+      description: |
+        The toid(s) of the feature(s) (e.g., 1455862).
+        If 'Report many instances' is selected, paste one toid per line (copy and paste column as plain text without header), corresponding to each Item Identifier.
+        Ensure the number of lines matches the Item Identifiers.
+      placeholder: |
+        1455862
+        1455863
+        1455864
+      render: shell
     validations:
       required: true
   - type: textarea
     id: issue-description
     attributes:
-      label: "Describe the issue"
-      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
-      placeholder: "E.g., the flowpath should drain to a water body with specific identifier..."
+      label: "Describe the issue(s)"
+      description: |
+        Provide a summary of the issue(s). This description applies to all instances if reporting many.
+        **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below.
+      placeholder: "E.g., these flowpaths are missing connections to the main river channel..."
     validations:
       required: false

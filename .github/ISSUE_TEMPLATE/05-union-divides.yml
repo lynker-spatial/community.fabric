@@ -1,42 +1,19 @@
 # .github/ISSUE_TEMPLATE/05-union-divides.yml
 
-name: "Map Error: Union Divides"
+name: "Divides: Union Divides"
 description: "Report divides that need to be unioned."
-title: "[Map Error] <item-identifier> Union Divides"
+title: "[Hydrofabric] Divides <item-identifier> Union Divides"
 labels:
-  - reid_divide-union-divides
+  - Hydrofabric-union-divides
 body:
   - type: markdown
     attributes:
       value: |
         The title should not be changed and will be automatically updated based on the Item Identifier.
-        Thanks for reporting a map item error!
+        Thanks for reporting a hydrofabric issue!
         Please provide the required details below.
-        Use this map to identify the item: [Map](https://spatial.dev.water.noaa.gov/view/hydrofabric).
-  - type: input
-    id: item-identifier
-    attributes:
-      label: "Item Identifier"
-      description: "The new divide id (e.g., cat-620629)."
-      placeholder: "cat-620629"
-    validations:
-      required: true
-  - type: input
-    id: id-to-merge
-    attributes:
-      label: "IDs to Merge"
-      description: "List of divide ids to merge (e.g., 'cat-620629,cat-620630,cat-620631')."
-      placeholder: "cat-620629,cat-620630,cat-620631"
-    validations:
-      required: true
-  - type: input
-    id: vpu
-    attributes:
-      label: "VPU"
-      description: "The VPU where the issue occurs (e.g., 01)."
-      placeholder: "01"
-    validations:
-      required: true
+        **Important Note: the new divide identifier needs to be the most downstream of the IDs to merge.**
+        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
   - type: dropdown
     id: hf-version
     attributes:
@@ -44,14 +21,68 @@ body:
       description: "Select the type of hydrofabric version."
       options:
         - v2.2
-        - other
+        - v2.3
     validations:
       required: true
-  - type: textarea
-    id: issue-description
+  - type: dropdown
+    id: report-mode
     attributes:
-      label: "Describe the issue"
-      description: "Provide a summary of the issue. **Optional:** You can upload an image by dragging and dropping it into the issue description or by using the 'Attach files' feature below."
-      placeholder: "E.g., these divides need to be joined..."
+      label: "Report Mode"
+      description: "Select if you are reporting a single union operation or multiple separate union operations."
+      options:
+        - "Report a single union operation"
+        - "Report many union operations (paste columns of data)"
+    validations:
+      required: true
+  - type: textarea 
+    id: vpu 
+    attributes:
+      label: "VPU(s)" 
+      description: |
+        The VPU(s) where the union operation(s) occur (e.g., 01).
+        If 'Report many union operations' is selected, paste one VPU per line, corresponding to each new Item Identifier.
+      placeholder: |
+        01
+        01
+        02
+      render: shell
+    validations:
+      required: true
+  - type: textarea 
+    id: item-identifier 
+    attributes:
+      label: "New Item Identifier(s)" 
+      description: |
+        The **new** divide id(s) after unioning (e.g., 620629). One per line if reporting many operations.
+      placeholder: |
+        620629
+        730510
+        840220
+      render: shell
+    validations:
+      required: true
+  - type: textarea 
+    id: id-to-merge 
+    attributes:
+      label: "List(s) of IDs to Merge" 
+      description: |
+        For each new item identifier (each line above), provide the corresponding list of existing divide IDs to be unioned.
+        **Each line here should be a comma-separated list of IDs** (e.g., '620629,620630,620631').
+        Ensure the number of lines here matches the number of 'New Item Identifier(s)'.
+      placeholder: |
+        620629,620630,620631
+        730510,730500
+        840220,840200,840190
+      render: shell
+    validations:
+      required: true 
+  - type: textarea
+    id: issue-description 
+    attributes:
+      label: "Describe the union operations"
+      description: |
+        Provide a summary of why these union operations are needed. This description applies to all operations if reporting many.
+        **Optional:** You can upload an image by dragging and dropping it into this description box or by using the 'Attach files' feature below.
+      placeholder: "E.g., these divides represent a single catchment area and need to be unioned..."
     validations:
       required: false
