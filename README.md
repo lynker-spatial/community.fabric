@@ -1,4 +1,4 @@
-# 🛠️ Community Hydrofabric Issue Tracking:<a href="https://github.com/lynker-spatial/Community_Hydrofabric.git"><img src="assets/images/cm_logo.png" align="right" width="45%"/></a>
+# Community Hydrofabric Issue Tracking
 
 [![Workflow Status](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-hydrofabric-issues.yml/badge.svg)](https://github.com/lynker-spatial/Community_Hydrofabric/actions/workflows/export-hydrofabric-issues.yml)
 ![GitHub issues](https://img.shields.io/github/issues/lynker-spatial/Community_Hydrofabric)
@@ -20,7 +20,7 @@ To ensure consistency and enable automation, we use **GitHub Issue Templates**. 
 
 ---
 
-## 📜 Table of Contents
+## Table of Contents
 
 *   [Introduction](#-introduction)
 *   [How It Works](#️-how-it-works)

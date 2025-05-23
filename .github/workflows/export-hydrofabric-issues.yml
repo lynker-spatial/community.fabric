@@ -1,0 +1,261 @@
+# .github/workflows/export-hydrofabric-issues.yml
+
+name: Export Hydrofabric Issues
+
+on:
+  issues:
+    types: [opened, edited]
+  workflow_dispatch:
+
+jobs:
+  update_title:
+    permissions:
+      issues: write
+    if: github.event_name == 'issues' && (github.event.action == 'opened' || github.event.action == 'edited')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body;
+            const currentTitle = issue.title;
+            const labels = issue.labels.map(label => label.name);
+
+            if (!issue || typeof issue.number === 'undefined') {
+              console.log("Error: Issue context or issue number is undefined.");
+              core.setFailed("Issue context or issue number is undefined."); // Explicitly fail the step
+              return;
+            }
+
+            const itemIdentifierPlaceholder = "<item-identifier>";
+            const briefDescriptionPlaceholder = "<brief-description>";
+            const hlLinkPlaceholder = "<hl_link>";
+            const hlIdPlaceholder = "<hl_id>";
+
+            let newTitle = currentTitle;
+            let placeholderToReplace = null;
+            let valueForPlaceholder = null;
+
+            function getCleanedValue(textBlock) {
+              if (!textBlock || textBlock.trim() === '_No response_') return null;
+              const lines = textBlock.trim().split('\n');
+              for (const line of lines) {
+                const cleanLine = line.trim();
+                if (cleanLine && !cleanLine.startsWith('```') && !cleanLine.startsWith('e.g.,') && cleanLine !== '```shell') {
+                  // If line is ```content```, try to extract content
+                  if (cleanLine.startsWith("```") && cleanLine.endsWith("```") && cleanLine.length > 6) {
+                    const contentInTicks = cleanLine.substring(3, cleanLine.length - 3).trim();
+                    if (contentInTicks && contentInTicks.toLowerCase() !== "shell" && contentInTicks.toLowerCase() !== "text") {
+                        return contentInTicks;
+                    } // else, this line itself is a marker or invalid, try next.
+                  } else {
+                    return cleanLine; // Return the first valid, non-placeholder line
+                  }
+                }
+              }
+              return null; // No valid line found
+            }
+
+            if (labels.includes('Hydrofabric-hydrolocation-additions') && currentTitle.includes(hlLinkPlaceholder)) {
+              placeholderToReplace = hlLinkPlaceholder;
+              const hlLinkRegex = /### HL Link \(Internal ID \/ Unique Identifier\)\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/; // Escaped ( and )
+              const match = body.match(hlLinkRegex);
+              if (match && match[1]) valueForPlaceholder = getCleanedValue(match[1]);
+            } else if (labels.includes('Hydrofabric-hydrolocation-adjustments') && currentTitle.includes(hlIdPlaceholder)) {
+              placeholderToReplace = hlIdPlaceholder;
+              const hlIdRegex = /### Item Identifier\(s\) \(hl_id\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/; // Escaped ( and )
+              const match = body.match(hlIdRegex);
+              if (match && match[1]) valueForPlaceholder = getCleanedValue(match[1]);
+            } else if (currentTitle.includes(itemIdentifierPlaceholder)) {
+              placeholderToReplace = itemIdentifierPlaceholder;
+              const identifierRegexes = [ // Ensure parentheses are escaped here if they are literal in section titles
+                /### Item Identifier\(s\)\s*\(Current Flowpath\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/,
+                /### Item Identifier\(s\)\s*\(Flowpath\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/,
+                /### Item Identifier\(s\)\s*to Remove\s*\n\n([\s\S]*?)(?=\n###|\Z)/,
+                /### New Item Identifier\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/,
+                /### Current Item Identifier\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/,
+                /### Item Identifier\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/,
+                /### Item Identifier\s*\n\n([\s\S]*?)(?=\n###|\Z)/
+              ];
+              for (const regex of identifierRegexes) {
+                const match = body.match(regex);
+                if (match && match[1]) {
+                  valueForPlaceholder = getCleanedValue(match[1]);
+                  if (valueForPlaceholder) break;
+                }
+              }
+            } else if (currentTitle.includes(briefDescriptionPlaceholder)) {
+              placeholderToReplace = briefDescriptionPlaceholder;
+              const briefDescRegex = /### Brief Description of Data \(for Title\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/; // Escaped ( and )
+              const match = body.match(briefDescRegex);
+              if (match && match[1]) valueForPlaceholder = getCleanedValue(match[1]);
+            }
+
+            if (!placeholderToReplace) {
+              console.log(`Title "${currentTitle}" does not contain a known placeholder for its labels, or label mismatch. Skipping title update.`);
+              return;
+            }
+
+            if (valueForPlaceholder) {
+              newTitle = currentTitle.replace(placeholderToReplace, valueForPlaceholder);
+              if (newTitle !== currentTitle) {
+                console.log(`Updating title from "${currentTitle}" to "${newTitle}"`);
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  title: newTitle
+                });
+              } else {
+                console.log(`New title "${newTitle}" is same as current. No update needed.`);
+              }
+            } else {
+              console.log(`Placeholder "${placeholderToReplace}" found in title, but no valid, clean value found in body to replace it.`);
+            }
+
+  validate_issue_data:
+    permissions:
+      issues: write
+    if: github.event_name == 'issues' && (github.event.action == 'opened' || github.event.action == 'edited')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body;
+            const labels = issue.labels.map(label => label.name);
+            const comments = [];
+
+            if (labels.includes('Hydrofabric-hydrolocation-additions')) {
+              const targetFlowpathIdRegex = /### Target Flowpath ID\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const hlReferenceRegex = /### HL Reference\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const hlLinkRegex = /### HL Link \(Internal ID \/ Unique Identifier\)\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const latitudeRegex = /### Latitude\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const longitudeRegex = /### Longitude\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const epsgRegex = /### EPSG Code\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+
+              const missingFields = [];
+              const checkField = (regex, fieldName) => {
+                const match = body.match(regex);
+                if (!match || !match[1] || match[1].trim() === '_No response_' || match[1].trim() === '') {
+                  missingFields.push(fieldName);
+                }
+              };
+              checkField(targetFlowpathIdRegex, '"Target Flowpath ID(s)"');
+              checkField(hlReferenceRegex, '"HL Reference(s)"');
+              checkField(hlLinkRegex, '"HL Link (Internal ID / Unique Identifier)(s)"');
+              checkField(latitudeRegex, '"Latitude(s)"');
+              checkField(longitudeRegex, '"Longitude(s)"');
+              checkField(epsgRegex, '"EPSG Code(s)"');
+
+              if (missingFields.length > 0) {
+                 comments.push(`For "Hydrofabric-hydrolocation-additions" issues, please provide the following required details: ${missingFields.join(', ')}.`);
+              }
+            }
+
+            if (labels.includes('Hydrofabric-hydrolocation-adjustments')) {
+              const hlIdRegex = /### Item Identifier\(s\) \(hl_id\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const newLatitudeRegex = /### New Latitude\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const newLongitudeRegex = /### New Longitude\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const newEpsgRegex = /### New EPSG Code\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+
+              const missingFields = [];
+              const checkField = (regex, fieldName) => {
+                const match = body.match(regex);
+                if (!match || !match[1] || match[1].trim() === '_No response_' || match[1].trim() === '') {
+                  missingFields.push(fieldName);
+                }
+              };
+              checkField(hlIdRegex, '"Item Identifier(s) (hl_id)"');
+              checkField(newLatitudeRegex, '"New Latitude(s)"');
+              checkField(newLongitudeRegex, '"New Longitude(s)"');
+              checkField(newEpsgRegex, '"New EPSG Code(s)"');
+
+              if (missingFields.length > 0) {
+                comments.push(`For "Hydrofabric-hydrolocation-adjustments" issues, please provide the following required details: ${missingFields.join(', ')}.`);
+              }
+            }
+
+            if (labels.includes('Hydrofabric-large-data-submission')) {
+              const briefDescRegex = /### Brief Description of Data \(for Title\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const detailedDescRegex = /### Detailed Description of the Data\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
+              const missingFields = [];
+              const checkField = (regex, fieldName) => {
+                const match = body.match(regex);
+                if (!match || !match[1] || match[1].trim() === '_No response_' || match[1].trim() === '') {
+                  missingFields.push(fieldName);
+                }
+              };
+              checkField(briefDescRegex, '"Brief Description of Data (for Title)"');
+              checkField(detailedDescRegex, '"Detailed Description of the Data"');
+              if (missingFields.length > 0) {
+                 comments.push(`For "Hydrofabric-large-data-submission", the following fields are required: ${missingFields.join(', ')}.`);
+              }
+            }
+
+            if (comments.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: comments.join('\n\n')
+              });
+            }
+
+  export:
+    permissions:
+      issues: read
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyGithub pyproj
+      - name: Export issues to CSV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          labels=(
+            "Hydrofabric-topo-fixes"
+            "Hydrofabric-merge-flowpaths"
+            "Hydrofabric-reid-divide"
+            "Hydrofabric-remove-flowpaths"
+            "Hydrofabric-union-divides"
+            "Hydrofabric-hydrolocation-additions"
+            "Hydrofabric-hydrolocation-adjustments"
+            "Hydrofabric-large-data-submission"
+          )
+          echo "Number of labels to process: ${#labels[@]}" # DEBUGGING LINE
+          for label_slug in "${labels[@]}"; do
+            filename=$(echo "$label_slug" | tr '[:upper:]' '[:lower:]' | sed 's/-/_/g').csv
+            echo "Processing label: $label_slug, outputting to: $filename" # DEBUGGING LINE
+            python .github/scripts/export_hydrofabric_issues.py --label "$label_slug" --output "$filename"
+          done
+      - name: List generated CSV files # DEBUGGING STEP
+        run: ls -l *.csv
+      - name: Upload CSVs
+        uses: actions/upload-artifact@v4
+        with:
+          name: hydrofabric-issue-reports
+          path: |
+            hydrofabric_topo_fixes.csv
+            hydrofabric_merge_flowpaths.csv
+            hydrofabric_reid_divide.csv
+            hydrofabric_remove_flowpaths.csv
+            hydrofabric_union_divides.csv
+            hydrofabric_hydrolocation_additions.csv
+            hydrofabric_hydrolocation_adjustments.csv
+            hydrofabric_large_data_submission.csv
+          if-no-files-found: warn 
