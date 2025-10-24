@@ -156,6 +156,7 @@ jobs:
             }
 
             if (labels.includes('Hydrofabric-hydrolocation-adjustments')) {
+            const targetFlowpathIdRegex = /### Target Flowpath ID\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
               const hlIdRegex = /### Item Identifier\(s\) \(hl_id\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
               const newLatitudeRegex = /### New Latitude\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
               const newLongitudeRegex = /### New Longitude\(s\)\s*\n\n([\s\S]*?)(?=\n###|\Z)/;
@@ -168,6 +169,7 @@ jobs:
                   missingFields.push(fieldName);
                 }
               };
+              checkField(targetFlowpathIdRegex, '"Target Flowpath ID(s)"');
               checkField(hlIdRegex, '"Item Identifier(s) (hl_id)"');
               checkField(newLatitudeRegex, '"New Latitude(s)"');
               checkField(newLongitudeRegex, '"New Longitude(s)"');

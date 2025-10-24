@@ -298,6 +298,7 @@ def main():
                         row_data["epsg"] = get_list_from_textarea(epsgs_raw)[0] if epsgs_raw else ""
                     elif args.label == "Hydrofabric-hydrolocation-adjustments":
                         row_data["hl_id"] = item_identifiers_raw # Primary ID
+                        row_data["flowpath_id"] = get_list_from_textarea(flowpath_ids_raw)[0] if flowpath_ids_raw else ""
                         row_data["latitude"] = get_list_from_textarea(latitudes_raw)[0] if latitudes_raw else ""
                         row_data["longitude"] = get_list_from_textarea(longitudes_raw)[0] if longitudes_raw else ""
                         row_data["epsg"] = get_list_from_textarea(epsgs_raw)[0] if epsgs_raw else ""
