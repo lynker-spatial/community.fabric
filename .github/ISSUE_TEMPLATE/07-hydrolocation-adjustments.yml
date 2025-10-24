@@ -11,8 +11,9 @@ body:
       value: |
         The title should not be changed and will be automatically updated based on the Item Identifier.
         Thanks for reporting a hydrofabric issue!
+        Please ensure your report includes the **corrected** topology of identifiers, not the erroneous one.
         Use this template to report adjustments for **existing** hydrolocations, such as correcting their geographic coordinates.
-        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
+        All issues must be reported using reference fabric identifiers. If an issue originates in a refactored or NextGen hydrofabric, please trace it back to the reference fabric before submitting. Use the [Hydrofabric Viewer Map](https://hydrofabric.lynker-spatial.com/) for assistance.
   - type: dropdown
     id: hf-version
     attributes:
@@ -56,6 +57,20 @@ body:
       placeholder: |
         64615
         64616
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: flowpath-identifier
+    attributes:
+      label: "Target Flowpath ID(s)"
+      description: |
+        The identifier(s) of the flowpath(s) (e.g., 1455862).
+        If 'Report many instances' is selected, paste one identifier per line (copy and paste column as plain text without header). Each line will become a separate entry in the CSV.
+      placeholder: |
+        1455862
+        1455863
+        1455864
       render: shell
     validations:
       required: true

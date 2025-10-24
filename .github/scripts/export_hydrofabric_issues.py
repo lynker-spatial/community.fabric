@@ -194,6 +194,7 @@ def main():
                 elif args.label == "Hydrofabric-hydrolocation-adjustments":
                     item_identifiers_raw = get_value_from_parsed_data(parsed_body_data, ["Item Identifier(s) (hl_id)"])
                     hl_ids_raw = item_identifiers_raw
+                    flowpath_ids_raw = get_value_from_parsed_data(parsed_body_data, ["Target Flowpath ID(s)"])
                     latitudes_raw = get_value_from_parsed_data(parsed_body_data, ["New Latitude(s)"])
                     longitudes_raw = get_value_from_parsed_data(parsed_body_data, ["New Longitude(s)"])
                     epsgs_raw = get_value_from_parsed_data(parsed_body_data, ["New EPSG Code(s)"])
@@ -253,6 +254,7 @@ def main():
                             row_data["epsg"] = epsgs_list[0] if single_epsg_for_all else (epsgs_list[i] if i < len(epsgs_list) else "")
                         elif args.label == "Hydrofabric-hydrolocation-adjustments":
                             row_data["hl_id"] = item_identifiers_list[i] 
+                            row_data["flowpath_id"] = flowpath_ids_list[i] if i < len(flowpath_ids_list) else ""
                             row_data["latitude"] = latitudes_list[i] if i < len(latitudes_list) else ""
                             row_data["longitude"] = longitudes_list[i] if i < len(longitudes_list) else ""
                             row_data["epsg"] = epsgs_list[0] if single_epsg_for_all else (epsgs_list[i] if i < len(epsgs_list) else "")

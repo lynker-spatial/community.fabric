@@ -57,6 +57,10 @@ This repository is designed for the community to report specific geospatial issu
 
 By using our structured issue templates, you help us gather precise information, which facilitates automated validation and allows the Hydrofabric team to efficiently address and integrate your feedback.
 
+**IMPORTANT NOTE**
+
+All reports must be based on the reference fabric identifiers. If an issue is found in the refactored or NextGen hydrofabrics, please trace the issue back to the fundamental reference fabric before reporting. You can use the [Hydrofabric Viewer Map](https://hydrofabric.lynker-spatial.com/) to assist in tracking the issue through the reference fabric.
+
 ---
 
 ## How It Works
@@ -69,7 +73,7 @@ By using our structured issue templates, you help us gather precise information,
 
 ## Identifying Features
 
-To report issues accurately, you'll often need to identify specific hydrofabric features. Please use the official **[Hydrofabric Viewer Map](https://staging.lynker-spatial.com/hfview.html)** to find:
+To report issues accurately, you'll often need to identify specific hydrofabric features. Please use the official **[Hydrofabric Viewer Map](https://hydrofabric.lynker-spatial.com/)** to find:
 
 *   **Item Identifiers (IDs)** for flowpaths or divides.
 *   **Topology toids** (often the same as the item identifier for flowpaths).
@@ -218,7 +222,7 @@ When a template's "Report Mode" is set to "Report many instances (paste columns 
 ### Tips for Reporting
 
 *   **Be Specific:** The more precise your information, the easier it is to address the issue.
-*   **Use the Map:** Refer to the [Hydrofabric Viewer Map](https://staging.lynker-spatial.com/hfview.html) to get accurate IDs and VPUs.
+*   **Use the Map:** Refer to the [Hydrofabric Viewer Map](https://hydrofabric.lynker-spatial.com/) to get accurate IDs and VPUs.
 *   **Screenshots are Great:** A picture is worth a thousand words. Highlight the problematic area.
 *   **If Unsure:** If you're uncertain about a field, provide your best guess and explain any uncertainties in the description.
 *   **One Issue per Report (Generally):** Unless using the "Report many instances" feature for similar items, please create separate GitHub issues for distinct problems.

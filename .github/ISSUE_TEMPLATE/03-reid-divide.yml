@@ -12,7 +12,7 @@ body:
         The title should not be changed and will be automatically updated based on the Item Identifier.
         Thanks for reporting a hydrofabric issue!
         Please provide the required details below.
-        Use this map to identify the item: [Map](https://staging.lynker-spatial.com/hfview.html).
+        All issues must be reported using reference fabric identifiers. If an issue originates in a refactored or NextGen hydrofabric, please trace it back to the reference fabric before submitting. Use the [Hydrofabric Viewer Map](https://hydrofabric.lynker-spatial.com/) for assistance.
   - type: dropdown
     id: hf-version
     attributes:
